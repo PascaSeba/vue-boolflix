@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <title>Boolfix (my Netflix)</title>
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="my_header">
+                <input type="text" v-model="querySearch" @keyup.13="search">
+            </div>
+        </header>
+
+        <main>
+            <div class="my_main">
+                <div id="movie_container" v-for="found in researched">
+                    <!-- <h4 v-if="">Type: Movie</h4>
+                    <h4 v-else>Type: Serie</h4> -->
+                    <img :src="imgFoundSrc + imgFoundSize + found.backdrop_path" alt="">
+                    <h2>Titolo: {{found.title||found.name}}</h2>
+                    <h3>Titolo originale: {{found.original_title||found.original_name}}</h3>
+                    <p class="your_language">Lingua disponibile: <img src="https://www.countryflags.io/it/shiny/64.png" alt=""></p>
+                    <p class="original_language">Lingua originale: <img v-if="found.original_language=='en'" src="https://www.countryflags.io/gb/shiny/64.png" alt="found.original_language" class="lang_flag"><img v-else :src="'https://www.countryflags.io/'+found.original_language+'/shiny/64.png'"
+                            alt="found.original_language" class="lang_flag"></p>
+                    <p><i v-for="star in stellarVote(found.vote_average)" class="fas fa-star"></i><i v-for="star in (stellarNumber - stellarVote(found.vote_average))" class="far fa-star"></i></p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
