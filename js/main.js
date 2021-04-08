@@ -5,21 +5,23 @@ var app = new Vue({
         researched: [],
         stellarNumber: 5,
         imgFoundSrc: 'https://image.tmdb.org/t/p/',
-        imgFoundSize: 'w500',
+        imgFoundSize: 'w342/',
+        myAPI: "7e6063e162f3f80112ea0b2bb45258db",
     },
     methods: {
         search() {
+            this.researched = [];
             axios
                 .get("https://api.themoviedb.org/3/search/movie", {
                     params: {
-                        api_key: "7e6063e162f3f80112ea0b2bb45258db",
+                        api_key: this.myAPI,
                         query: this.querySearch,
                         language: "it - IT",
                     }
                 })
                 .then((result) => {
                     console.log(result.data.results);
-                    this.researched = result.data.results;
+                    this.researched = this.researched.concat(result.data.results);
                 })
 
             axios

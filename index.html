@@ -24,9 +24,10 @@
         <main>
             <div class="my_main">
                 <div id="movie_container" v-for="found in researched">
-                    <!-- <h4 v-if="">Type: Movie</h4>
-                    <h4 v-else>Type: Serie</h4> -->
-                    <img :src="imgFoundSrc + imgFoundSize + found.backdrop_path" alt="">
+                    <h4 v-if="found.original_title">Type: Movie</h4>
+                    <h4 v-else>Type: Serie</h4>
+                    <img class="null" v-if="found.backdrop_path == null" src="https://image.freepik.com/free-vector/set-cute-robot-ai-character-error-crash-action_99413-154.jpg" alt="">
+                    <img class="found_image" v-else :src="imgFoundSrc + imgFoundSize + found.backdrop_path" alt="">
                     <h2>Titolo: {{found.title||found.name}}</h2>
                     <h3>Titolo originale: {{found.original_title||found.original_name}}</h3>
                     <p class="your_language">Lingua disponibile: <img src="https://www.countryflags.io/it/shiny/64.png" alt=""></p>
