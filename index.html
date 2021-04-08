@@ -15,24 +15,53 @@
 
 <body>
     <div id="root">
+        <!-- INIZIO DELL'HEADER -->
         <header>
             <div class="my_header">
-                <input type="text" v-model="querySearch" @keyup.13="search">
+                <img src="img/boolflix.png" alt="logo" id="logo">
+                <!-- MENU DI NAVIGAZIONE -->
+                <div class="my_nav">
+                    <ul>
+                        <li>Home</li>
+                        <li>Serie TV</li>
+                        <li>Film</li>
+                        <li>Nuovi e popolari</li>
+                        <li>La mia lista</li>
+                    </ul>
+                </div>
+                <!-- CASELLA DI RICERCA DI FILM E SERIE TV -->
+                <div class="searchbar">
+                    <i class="fas fa-search" @click="search"></i><input type="text" v-model="querySearch" @keyup.13="search" placeholder="Cerca un film o una serie...">
+                </div>
+                <div class="second_nav">
+                    <ul>
+                        <li>BAMBINI</li>
+                        <li><i class="fas fa-gift"></i></li>
+                        <li><i class="fas fa-bell"></i></li>
+                        <img src="img/baby_yoda.png" alt=""><i class="fas fa-sort-down"></i>
+                        <li><i class="fas fa-sliders-h"></i></li>
+                    </ul>
+
+                </div>
             </div>
         </header>
 
+        <!-- INIZIO DEL CORPO DELLA PAGINA -->
         <main>
             <div class="my_main">
                 <div id="movie_container" v-for="found in researched">
+                    <!-- LISTA FILM E SERIE TV +... -->
                     <h4 v-if="found.original_title">Type: Movie</h4>
                     <h4 v-else>Type: Serie</h4>
                     <img class="null" v-if="found.backdrop_path == null" src="https://image.freepik.com/free-vector/set-cute-robot-ai-character-error-crash-action_99413-154.jpg" alt="">
                     <img class="found_image" v-else :src="imgFoundSrc + imgFoundSize + found.backdrop_path" alt="">
                     <h2>Titolo: {{found.title||found.name}}</h2>
                     <h3>Titolo originale: {{found.original_title||found.original_name}}</h3>
+
+                    <!-- ...LISTA DELLE LINGUE DEI FILM E DELLE SERIE TV -->
                     <p class="your_language">Lingua disponibile: <img src="https://www.countryflags.io/it/shiny/64.png" alt=""></p>
-                    <p class="original_language">Lingua originale: <img v-if="found.original_language=='en'" src="https://www.countryflags.io/gb/shiny/64.png" alt="found.original_language" class="lang_flag"><img v-else :src="'https://www.countryflags.io/'+found.original_language+'/shiny/64.png'"
-                            alt="found.original_language" class="lang_flag"></p>
+                    <p class="original_language">Lingua originale: <img v-if="found.original_language=='en'" src="https://www.countryflags.io/gb/shiny/64.png" alt="found.original_language" class="lang_flag"><img v-else-if="found.original_language=='ja'" src="img/jap_flag.png" alt="">
+                        <img v-else :src="'https://www.countryflags.io/'+found.original_language+'/shiny/64.png'" :alt="found.original_language" class="lang_flag"></p>
                     <p><i v-for="star in stellarVote(found.vote_average)" class="fas fa-star"></i><i v-for="star in (stellarNumber - stellarVote(found.vote_average))" class="far fa-star"></i></p>
                 </div>
             </div>
