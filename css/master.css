@@ -143,8 +143,12 @@ body {
 
 .original_language img,
 .your_language img {
-    width: 35px;
+    width: 25px;
     vertical-align: middle;
+}
+
+#danish_flag {
+    width: 22.5px;
 }
 
 .found_image {
@@ -215,6 +219,13 @@ body {
 
 .principal_info h2 {
     font-size: 1.35em;
+    text-align: center;
+}
+
+.booltitle {
+    color: #e7071f;
+    font-weight: bold;
+    text-align: center;
 }
 
 #movie_container:hover .principal_info,
@@ -222,6 +233,11 @@ body {
     top: 12%;
     left: 6%;
     cursor: pointer;
+    color: rgba(218, 255, 117, 0.39);
+}
+
+#movie_container:hover .principal_info .ourTitle,
+#movie_container:focus .principal_info .ourTitle {
     color: rgba(218, 255, 117, 0.39);
 }
 
@@ -241,6 +257,42 @@ body {
 #movie_container:hover .principal_info h2,
 #movie_container:focus .principal_info h2 {
     font-size: 1em;
+}
+
+.onHover>* {
+    padding: 5px;
+}
+
+.onHover h3:first-child {
+    text-align: center;
+    padding: 5px;
+    border: 0.1px solid #070707;
+    border-top: none;
+    margin-bottom: 13.5px;
+}
+
+.trama {
+    overflow-y: auto;
+    margin-top: 3px;
+    margin-bottom: 2px;
+    max-height: 120px;
+}
+
+.trama::-webkit-scrollbar {
+    width: 12px;
+    background-color: #0f0f0f;
+    border-radius: 15px;
+}
+
+.trama::-webkit-scrollbar-thumb {
+    background-color: #e7071f;
+    border-radius: 20px;
+    border: 2px solid #1b1212;
+}
+
+.trama::-webkit-scrollbar-thumb:active,
+.trama::-webkit-scrollbar-thumb:hover {
+    background-color: #b91727;
 }
 
 .welcome {
