@@ -266,7 +266,7 @@ body {
 .onHover h3:first-child {
     text-align: center;
     padding: 5px;
-    border: 0.1px solid #070707;
+    border: 1px solid #070707;
     border-top: none;
     margin-bottom: 13.5px;
 }
